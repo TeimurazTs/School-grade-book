@@ -25,6 +25,12 @@ export class Lms {
 
 class Subject {
   constructor(data) {
+    if (data.title === undefined || typeof data.title !== "string") {
+      throw new TypeError("title is required and needs to be a string");
+    }
+    if (data.lessons === undefined || typeof data.title !== "string") {
+      throw new TypeError("lessons is required and needs to be a string");
+    }
     this.title = data.title;
     this.lessons = data.lessons;
     if (data.description) {
@@ -48,5 +54,3 @@ export const lms = new Lms();
 
 lms.add(history);
 lms.add(math);
-
-// console.log(lms.readAll());
