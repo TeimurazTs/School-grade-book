@@ -11,7 +11,7 @@ export class Lms {
   }
 
   verify(data) {
-    return this[data] ? true : false;
+    return this.mapData.get(data.id) ? true : false;
   }
 
   readAll() {
@@ -39,6 +39,14 @@ const history = new Subject({
   lessons: 24,
 });
 
+const math = new Subject({
+  title: "Math",
+  lessons: 24,
+});
+
 const lms = new Lms();
 
 lms.add(history);
+lms.add(math);
+
+console.log(lms.readAll());

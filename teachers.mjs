@@ -4,12 +4,12 @@ export class Teachers {
   }
   add(data) {
     this.id = Math.random();
-    this.mapData.set(id, data);
+    this.mapData.set(this.id, data);
     return this.id;
   }
 
   read(id) {
-    this.mapData.get(id);
+    return this.mapData.get(id);
   }
 
   update(id, data) {
@@ -22,3 +22,55 @@ export class Teachers {
 }
 
 const teachers = new Teachers();
+
+const teacherId = teachers.add({
+  name: {
+    first: "Edward",
+    last: "Norton",
+  },
+  dateOfBirth: "18.08.1969",
+  emails: [
+    {
+      email: "CoolestGuyEver@gmail.com",
+      primary: true,
+    },
+  ],
+  phones: [
+    {
+      phone: "599455665",
+      primary: true,
+    },
+  ],
+  sex: "Male",
+  subjects: [
+    {
+      subject: "History",
+    },
+  ],
+});
+
+// const teachers2 = teachers.add({
+//   name: {
+//     first: "Quentin",
+//     last: "Tarantino",
+//   },
+//   dateOfBirth: "27.03.1963",
+//   emails: [
+//     {
+//       email: "CoolestGuyEver@gmail.com",
+//       primary: true,
+//     },
+//   ],
+//   phones: [
+//     {
+//       phone: "599455665",
+//       primary: true,
+//     },
+//   ],
+//   sex: "Male",
+//   subjects: [
+//     {
+//       subject: "Math",
+//     },
+//   ],
+// });
