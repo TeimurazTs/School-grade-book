@@ -1,3 +1,13 @@
+import { pupil } from "./pupils.mjs";
+import { teacherId } from "./teachers.mjs";
+import { groupId } from "./groups.mjs";
+import { groups } from "./groups.mjs";
+import { teachers } from "./teachers.mjs";
+import { lms } from "./lms.mjs";
+import { history } from "./lms.mjs";
+
+const pupilId = pupil.id;
+
 export class GradeBooks {
   constructor(groups, teachers, lms) {
     this.groups = groups;
@@ -8,7 +18,7 @@ export class GradeBooks {
 
   add(groupId) {
     this.id = Math.random();
-    this.mapData.set(id, this.groups.mapData.get(groupId));
+    this.mapData.set(this.id, this.groups.mapData.get(groupId));
     return this.id;
   }
 
@@ -28,10 +38,10 @@ export class GradeBooks {
     });
     this.mapData.get(gradeBookId).pupils.forEach((element) => {
       if (element.id === record.pupilId) {
-        surname = element.name.lastStudent;
+        lastStudent = element.name.last;
       }
     });
-    let subject = this.lms.get(record.subjectId).title;
+    let subject = this.lms.mapData.get(record.subjectId).title;
     if (this.mapData.get(gradeBookId)[record.pupilId] === undefined) {
       this.mapData.get(gradeBookId)[record.pupilId] = {
         name: firstStudent + " " + lastStudent,
@@ -60,9 +70,34 @@ export class GradeBooks {
 
   readAll(gradebookId) {
     let toReturn = [];
-    this.mapData.get(gradebookId).forEach((el) => {
-      if (el.records) [toReturn.push(el)];
-    });
+    // this.mapData.get(gradebookId).forEach((el) => {
+    //   if (!el.name) {
+    //     toReturn.push(el);
+    //   }
+    // });
+    for (let el in this.mapData.get(gradebookId)) {
+      if (this.mapData.get(gradebookId)[el].records) {
+        toReturn.push(this.mapData.get(gradebookId)[el]);
+      }
+    }
     return toReturn;
   }
 }
+
+const gradebooks = new GradeBooks(groups, teachers, lms);
+
+const gradebook = gradebooks.add(groupId);
+
+const record = {
+  pupilId: pupilId,
+  teacherId: teacherId,
+  subjectId: history.id,
+  lesson: 1,
+  mark: 9,
+};
+
+gradebooks.addRecord(gradebook, record);
+
+const student = gradebooks.readAll(gradebook);
+
+console.log(student);

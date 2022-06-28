@@ -34,7 +34,7 @@ class Subject {
   id = Math.random();
 }
 
-const history = new Subject({
+export const history = new Subject({
   title: "History",
   lessons: 24,
 });
@@ -44,9 +44,9 @@ const math = new Subject({
   lessons: 24,
 });
 
-const lms = new Lms();
+export const lms = new Lms();
 
 lms.add(history);
 lms.add(math);
 
-console.log(lms.readAll());
+// console.log(lms.readAll());

@@ -5,6 +5,7 @@ export class Pupils {
 
   add(data) {
     this.id = Math.random();
+    data.id = this.id;
     this.mapData.set(this.id, data);
     return { id: this.id };
   }
@@ -22,14 +23,35 @@ export class Pupils {
   }
 }
 
-const pupils = new Pupils();
+export const pupils = new Pupils();
 
-const pupil = pupils.add({
+export const pupil = pupils.add({
   name: {
     first: "Nina",
     last: "Tkemaladze",
   },
   dateOfBirth: "18.08.1970",
+  emails: [
+    {
+      email: "ninaTkemaladze@gmail.com",
+      primary: true,
+    },
+  ],
+  phones: [
+    {
+      phone: "599457665",
+      primary: true,
+    },
+  ],
+  sex: "Female",
+});
+
+export const pupil2 = pupils.add({
+  name: {
+    first: "Gela",
+    last: "Meladze",
+  },
+  dateOfBirth: "18.08.1988",
   emails: [
     {
       email: "ninaTkemaladze@gmail.com",

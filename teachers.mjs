@@ -21,9 +21,9 @@ export class Teachers {
   }
 }
 
-const teachers = new Teachers();
+export const teachers = new Teachers();
 
-const teacherId = teachers.add({
+export const teacherId = teachers.add({
   name: {
     first: "Edward",
     last: "Norton",
