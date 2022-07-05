@@ -88,7 +88,7 @@ const returnTo = groups.readAll();
 
 const gradebooks = new GradeBooks(groups, teachers, lms);
 
-const gradebook = gradebooks.add(groupId);
+const gradebook: any = gradebooks.add(groupId);
 
 const record = {
   pupilId: pupilId,
@@ -100,6 +100,6 @@ const record = {
 
 gradebooks.addRecord(gradebook, record);
 
-let gradebook1 =  gradebooks.readAll(gradebook);
+let gradebook1 = gradebooks.readAll(gradebook);
 
-console.log(gradebook1)
+console.log(gradebook1);

@@ -1,13 +1,13 @@
 import { pupil } from "./index";
 
-let pupilId = pupil.id
+let pupilId = pupil.id;
 
 export class GradeBooks {
   groups: Groups;
   teachers: Teachers;
   lms: Lms;
   mapData: Map<any, any>;
-  id: number;
+  id: string;
   constructor(groups: Groups, teachers: Teachers, lms: Lms) {
     this.groups = groups;
     this.teachers = teachers;
@@ -16,7 +16,7 @@ export class GradeBooks {
   }
 
   add(groupId: string) {
-    this.id = Math.random();
+    this.id = Math.random().toString();
     this.mapData.set(this.id, this.groups.mapData.get(groupId));
     return this.id;
   }
@@ -62,13 +62,25 @@ export class GradeBooks {
       });
     }
   }
+
+  read(gradebookId: string, pupilId: string) {
+    return this.mapData.get(gradebookId)[pupilId];
+  }
+
+  readAll(gradebookId: string) {
+    let toReturn: {}[] = [];
+    for (let el in this.mapData.get(gradebookId)) {
+      if (this.mapData.get(gradebookId)[el].records) {
+        toReturn.push(this.mapData.get(gradebookId)[el]);
+      }
+    }
+    return toReturn;
+  }
 }
 
 interface Groups {
   id: string;
   mapData: Map<string, any>;
-  room: number;
-  pupils: {}[];
 }
 
 interface Teachers {
