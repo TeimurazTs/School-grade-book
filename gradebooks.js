@@ -2,7 +2,7 @@
 exports.__esModule = true;
 exports.GradeBooks = void 0;
 var index_1 = require("./index");
-var pupilId = index_1.pupil.id;
+
 var GradeBooks = /** @class */ (function () {
     function GradeBooks(groups, teachers, lms) {
         this.groups = groups;
