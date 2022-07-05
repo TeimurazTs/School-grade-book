@@ -1,21 +1,23 @@
 export class Lms {
+  mapData: Map<string, object>;
   constructor() {
     this.mapData = new Map();
   }
-  add(data) {
+
+  add(data: LmsScheme) {
     this.mapData.set(data.id, data);
   }
 
-  remove(data) {
+  remove(data: LmsScheme) {
     this.mapData.delete(data.id);
   }
 
-  verify(data) {
+  verify(data: LmsScheme) {
     return this.mapData.get(data.id) ? true : false;
   }
 
   readAll() {
-    let returnArray = [];
+    let returnArray: {}[] = [];
     this.mapData.forEach(function (value) {
       returnArray.push(value);
     });
@@ -23,13 +25,27 @@ export class Lms {
   }
 }
 
+interface LmsScheme {
+  id: string;
+  title: string;
+  description?: string;
+}
+
 export class Subject {
-  constructor(data) {
+  title: string;
+  lessons: number;
+  description: string;
+  constructor(data: SubjectScheme) {
     this.title = data.title;
     this.lessons = data.lessons;
     if (data.description) {
       this.description = data.description;
     }
   }
-  id = Math.random();
+}
+
+interface SubjectScheme {
+  title: string;
+  lessons: number;
+  description?: string;
 }

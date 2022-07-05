@@ -1,32 +1,37 @@
-export class GradeBooks {
-  constructor(groups, teachers, lms) {
+export class Gradebooks {
+  groups: Groups;
+  teachers: Teachers;
+  lms: Lms;
+  mapData: Map<any, any>;
+  id: number;
+  constructor(groups: Groups, teachers: Teachers, lms: Lms) {
     this.groups = groups;
     this.teachers = teachers;
     this.lms = lms;
     this.mapData = new Map();
   }
 
-  add(groupId) {
+  add(groupId: string) {
     this.id = Math.random();
     this.mapData.set(this.id, this.groups.mapData.get(groupId));
     return this.id;
   }
 
-  clear() {
+  clear(): void {
     this.mapData = new Map();
   }
 
-  addRecord(gradeBookId, record) {
-    let firstStudent;
-    let lastStudent;
+  addRecord(gradeBookId: number, record) {
+    let firstStudent: string = "";
+    let lastStudent: string = "";
     let firstTeacher = this.teachers.mapData.get(record.teacherId).name.first;
     let lastTeacher = this.teachers.mapData.get(record.teacherId).name.last;
-    this.mapData.get(gradeBookId).pupils.forEach((element) => {
+    this.mapData.get(gradeBookId).pupils.forEach((element: any) => {
       if (element.id === record.pupilId) {
         firstStudent = element.name.first;
       }
     });
-    this.mapData.get(gradeBookId).pupils.forEach((element) => {
+    this.mapData.get(gradeBookId).pupils.forEach((element: any) => {
       if (element.id === record.pupilId) {
         lastStudent = element.name.last;
       }
@@ -53,18 +58,20 @@ export class GradeBooks {
       });
     }
   }
+}
 
-  read(gradebookId, pupilId) {
-    return this.mapData.get(gradebookId)[pupilId];
-  }
+interface Groups {
+  id: string;
+  mapData: Map<string, any>;
+  room: number;
+  pupils: {}[];
+}
 
-  readAll(gradebookId) {
-    let toReturn = [];
-    for (let el in this.mapData.get(gradebookId)) {
-      if (this.mapData.get(gradebookId)[el].records) {
-        toReturn.push(this.mapData.get(gradebookId)[el]);
-      }
-    }
-    return toReturn;
-  }
+interface Teachers {
+  id: string;
+  mapData: Map<string, any>;
+}
+
+interface Lms {
+  mapData: Map<string, any>;
 }

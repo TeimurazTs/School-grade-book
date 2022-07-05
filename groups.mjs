@@ -1,7 +1,3 @@
-import { pupils } from "./pupils.mjs";
-import { pupil } from "./pupils.mjs";
-import { pupil2 } from "./pupils.mjs";
-
 export class Groups {
   constructor() {
     this.mapData = new Map();
@@ -43,19 +39,3 @@ export class Groups {
     return returnArray;
   }
 }
-
-const room = 236;
-
-export const groups = new Groups();
-
-export const groupId = groups.add(room);
-
-groups.addPupil(groupId, pupils.read(pupil.id));
-
-groups.addPupil(groupId,pupils.read(pupil2.id))
-
-groups.update(groupId, {
-  room: 237,
-});
-
-const returnTo = groups.readAll();
