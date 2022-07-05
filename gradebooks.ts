@@ -1,4 +1,8 @@
-export class Gradebooks {
+import { pupil } from "./index";
+
+let pupilId = pupil.id
+
+export class GradeBooks {
   groups: Groups;
   teachers: Teachers;
   lms: Lms;

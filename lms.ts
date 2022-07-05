@@ -4,7 +4,7 @@ export class Lms {
     this.mapData = new Map();
   }
 
-  add(data: LmsScheme) {
+  add(data: Subject) {
     this.mapData.set(data.id, data);
   }
 
@@ -32,6 +32,7 @@ interface LmsScheme {
 }
 
 export class Subject {
+  id: string;
   title: string;
   lessons: number;
   description: string;

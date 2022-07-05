@@ -11,7 +11,7 @@ export class Groups {
     return this.id;
   }
 
-  addPupil(id: string, data: PupilScheme) {
+  addPupil(id: string, data: any) {
     this.mapData.get(id).pupils.push(data);
   }
 

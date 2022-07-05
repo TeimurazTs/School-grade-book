@@ -1,8 +1,8 @@
-import { Lms, Subject } from "./LMS.mjs";
-import { Pupils } from "./pupils.mjs";
-import { GradeBooks } from "./gradebooks.mjs";
-import { Teachers } from "./teachers.mjs";
-import { Groups } from "./groups.mjs";
+import { Lms, Subject } from "./LMS";
+import { Pupils } from "./pupils";
+import { GradeBooks } from "./gradebooks";
+import { Teachers } from "./teachers";
+import { Groups } from "./groups";
 
 // teachers stuff
 
@@ -38,7 +38,7 @@ const teacherId = teachers.add({
 
 const pupils = new Pupils();
 
-const pupil = pupils.add({
+export const pupil = pupils.add({
   name: {
     first: "Nina",
     last: "Tkemaladze",
@@ -81,10 +81,6 @@ export const groups = new Groups();
 export const groupId = groups.add(room);
 
 groups.addPupil(groupId, pupils.read(pupil.id));
-
-groups.update(groupId, {
-  room: 237,
-});
 
 const returnTo = groups.readAll();
 

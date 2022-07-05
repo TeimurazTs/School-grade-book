@@ -33,7 +33,7 @@ interface TeacherScheme {
   emails: {
     email: string;
     primary: boolean;
-  };
+  }[];
   phones: [
     {
       phone: string;

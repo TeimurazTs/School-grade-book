@@ -1,4 +1,4 @@
-export class Pupuls {
+export class Pupils {
   mapData: Map<string, object>;
   id: string;
   constructor() {
@@ -32,6 +32,12 @@ interface PupilScheme {
     last: string;
   };
   dateOfBirth: string;
+  emails: [
+    {
+      email: string;
+      primary: boolean;
+    }
+  ];
   phones: [
     {
       phone: string;
