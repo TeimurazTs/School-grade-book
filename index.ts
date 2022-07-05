@@ -1,8 +1,8 @@
-import { Lms, Subject } from "./LMS";
-import { Pupils } from "./pupils";
-import { GradeBooks } from "./gradebooks";
-import { Teachers } from "./teachers";
-import { Groups } from "./groups";
+import { Lms, Subject } from "./LMS.js";
+import { Pupils } from "./pupils.js";
+import { GradeBooks } from "./gradebooks.js";
+import { Teachers } from "./teachers.js";
+import { Groups } from "./groups.js";
 
 // teachers stuff
 

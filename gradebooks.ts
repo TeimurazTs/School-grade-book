@@ -1,4 +1,4 @@
-import { pupil } from "./index";
+import { pupil } from "./index.js";
 
 let pupilId = pupil.id;
 
